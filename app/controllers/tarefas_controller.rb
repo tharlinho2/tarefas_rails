@@ -1,4 +1,6 @@
 class TarefasController < ApplicationController
+  include Exportable
+
   before_action :set_tarefa, only: %i[ edit update destroy ]
 
   # GET /tarefas or /tarefas.json
