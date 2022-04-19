@@ -1,0 +1,21 @@
+<tr class="border-top">
+  <td>
+    <span class="text-<%= tarefa.css_color %> ">
+      <%= tarefa.symbol %>
+    </span>
+    <% if tarefa.done? %>
+      <s class="text-muted"><%= tarefa.description %></s>
+    <% else %>
+      <%= tarefa.description %>
+    <% end %>
+  </td>
+
+  <td>
+    <%= l tarefa.due_date if tarefa.due_date %>
+  </td>
+
+  <td>
+    <%= link_to 'Editar', edit_tarefa_path(tarefa), class: 'btn btn-secondary btn-sm' %>
+    <%= link_to 'Apagar', tarefa, data: { 'turbo-method': :delete, 'turbo-confirm': 'Tem certeza?' }, class: 'btn btn-danger btn-sm' %>
+  </td>
+</tr>

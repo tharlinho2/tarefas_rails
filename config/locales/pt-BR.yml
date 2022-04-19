@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+
+    attributes:
+      tarefa:
+        description: 'Descrição'
+        due_date: 'Prazo'
+        done: 'Finalizada?'
