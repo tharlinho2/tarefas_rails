@@ -21,6 +21,10 @@
     <tbody>
       <% @tarefas.each do |tarefa| %>
         <%= render 'table_row', tarefa: tarefa %>
+
+        <% tarefa.sub_tarefas.order(:due_date).each do |sub_tarefa| %>
+          <%= render 'table_row', tarefa: sub_tarefa %>
+        <% end %>
       <% end %>
     </tbody>
   </table>

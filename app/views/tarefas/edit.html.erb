@@ -1,3 +1,5 @@
-<h1 class="display-4">Editar tarefa</h1>
+<h1 class="display-4">
+    Editar <%= @tarefa.parent? ? 'tarefa' : 'sub_tarefa' %>
+</h1>
   
 <%= render "form", tarefa: @tarefa %>

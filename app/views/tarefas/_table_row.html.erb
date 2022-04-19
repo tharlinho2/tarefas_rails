@@ -1,21 +1,22 @@
-<tr class="border-top">
-  <td>
-    <span class="text-<%= tarefa.css_color %> ">
-      <%= tarefa.symbol %>
-    </span>
+<tr class='<%= tarefa.parent? ? 'border-top' : '' %>'>
+  <td class="<%= tarefa.sub_tarefas? ? 'ps-5' : '' %>">
+    <span class="text-<%= tarefa.css_color %> pe-1"> <%= tarefa.symbol %> </span>
+
     <% if tarefa.done? %>
       <s class="text-muted"><%= tarefa.description %></s>
-    <% else %>
-      <%= tarefa.description %>
+    <% else %> 
+      <%= tarefa.description %> 
     <% end %>
   </td>
 
-  <td>
-    <%= l tarefa.due_date if tarefa.due_date %>
-  </td>
+  <td><%= l tarefa.due_date if tarefa.due_date %></td>
 
-  <td>
-    <%= link_to 'Editar', edit_tarefa_path(tarefa), class: 'btn btn-secondary btn-sm' %>
-    <%= link_to 'Apagar', tarefa, data: { 'turbo-method': :delete, 'turbo-confirm': 'Tem certeza?' }, class: 'btn btn-danger btn-sm' %>
+  <td class="text-right" style="padding-right: 0px;">
+    <%= link_to 'Editar', edit_tarefa_path(tarefa), class: 'btn btn-secondary btn-sm' %> 
+    <%= link_to 'Apagar', tarefa, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Tem certeza?' } %>
+    
+    <% if tarefa.parent? %>
+      <%= link_to '+ Sub-tarefa', new_tarefa_path(parent_id: tarefa.id), class: 'btn btn-success btn-sm' %> 
+    <% end %>
   </td>
 </tr>

@@ -1,4 +1,6 @@
 <%= form_with(model: tarefa, local: true) do |form| %>
+  <%= form.hidden_field :parent_id, value: tarefa.parent_id || params[:parent_id] %>
+
   <div class="form-group">
     <%= form.label :description, style: "display: block" %>
     <%= form.text_field :description, class: 'form-control' %>
@@ -14,7 +16,7 @@
     <%= form.label :done, class: 'form-check-label' %>
   </div>
 
-  <%= form.submit class: 'btn btn-primary', data: { "disable-with-value": 'Salvando...' } %>
+  <%= form.submit class: 'btn btn-primary', data: { disable_with: 'Salvando...' } %>
 
   <%= link_to 'Cancelar', tarefas_path, class: 'btn btn-light' %>
 <% end %>

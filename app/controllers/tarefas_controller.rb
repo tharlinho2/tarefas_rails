@@ -3,7 +3,7 @@ class TarefasController < ApplicationController
 
   # GET /tarefas or /tarefas.json
   def index
-    @tarefas = Tarefa.order(:due_date)
+    @tarefas = Tarefa.only_parents.order(:due_date)
   end
 
   # GET /tarefas/new
@@ -53,6 +53,6 @@ class TarefasController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def tarefa_params
-    params.require(:tarefa).permit(:description, :due_date, :done)
+    params.require(:tarefa).permit(:description, :due_date, :done, :parent_id)
   end
 end
